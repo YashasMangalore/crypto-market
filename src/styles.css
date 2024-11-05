@@ -1,0 +1,62 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-sort-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-sort-bar input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.search-sort-bar button {
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.crypto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.crypto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333333;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.crypto-name,
+.crypto-symbol,
+.crypto-price,
+.crypto-change,
+.crypto-mkt-cap {
+  font-size: 16px;
+}
+
+.crypto-change.positive {
+  color: #4caf50;
+}
+
+.crypto-change.negative {
+  color: #f44336;
+}
