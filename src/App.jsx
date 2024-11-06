@@ -27,12 +27,15 @@ const App = () => {
     fetchCryptoData();
   }, []);
 
-  // Filter and sort data based on search term and sort option
-  useEffect(() => {
+  // Function to handle filtering and sorting
+  const filterAndSortData = () => {
+    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+
+    // Filter the data based on the search term
     let filteredData = cryptoData.filter(
       (crypto) =>
-        crypto.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        crypto.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+        crypto.name.toLowerCase().includes(lowerCaseSearchTerm) ||
+        crypto.symbol.toLowerCase().includes(lowerCaseSearchTerm)
     );
 
     // Apply sorting based on the selected sort option
@@ -45,6 +48,11 @@ const App = () => {
     }
 
     setDisplayData(filteredData);
+  };
+
+  // Trigger filter and sort when searchTerm, sortOption, or cryptoData changes
+  useEffect(() => {
+    filterAndSortData();
   }, [searchTerm, sortOption, cryptoData]);
 
   return (
@@ -53,6 +61,7 @@ const App = () => {
         setSearchTerm={setSearchTerm}
         setSortOption={setSortOption}
       />
+      {/* Pass the displayData to CryptoList */}
       <CryptoList cryptos={displayData} />
     </div>
   );

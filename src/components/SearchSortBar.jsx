@@ -1,25 +1,29 @@
 import React from "react";
 
 const SearchSortBar = ({ setSearchTerm, setSortOption }) => {
-  // Define an array of sort options
-  const sortOptions = [
-    { label: "Sort By Mkt Cap", value: "marketCap" },
-    { label: "Sort by Percentage", value: "percentage" },
-  ];
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    console.log("Search Term (Input):", value); // Log search term from input
+  };
+
+  const handleSort = (option) => {
+    setSortOption(option);
+    console.log("Sort Option Selected:", option); // Log selected sort option
+  };
 
   return (
     <div className="search-sort-bar">
       <input
         type="text"
         placeholder="Search By Name or Symbol"
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleSearch}
+        className="search-input"
       />
-
-      {sortOptions.map((option, index) => (
-        <button key={index} onClick={() => setSortOption(option.value)}>
-          {option.label}
-        </button>
-      ))}
+      <button onClick={() => handleSort("marketCap")}>Sort By Mkt Cap</button>
+      <button onClick={() => handleSort("percentage")}>
+        Sort by Percentage
+      </button>
     </div>
   );
 };
